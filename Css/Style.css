@@ -94,6 +94,7 @@ width: 50px;
 	box-shadow: var(--input-shadow);
 	border-radius: 10px;
 }
+.btn-primary:disabled,
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus,

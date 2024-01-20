@@ -79,10 +79,15 @@
                 <label for="floatingInput">эл. почта</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">пароль</label>
+                <input type="password" class="form-control rounded-3" id="pass" placeholder="Password">
+				<label for="floatingPassword">пароль</label>
             </div>
-            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Зарегистроваться</button>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="repeat" placeholder="Password">
+                <label for="floatingPassword">повторите пароль</label>
+            </div>
+			<p id="valid"></p>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="regbut">Зарегистроваться</button>
         </form>
         </div>
     </div>
@@ -96,6 +101,40 @@
         <span>&copy; 2024 NExt team. <a href="https://github.com/vzgr/CodeQZ"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png", class="githublogo"></a></span>
     </div>
 </footer>
+<script>
+
+	let valid = document.getElementById("valid");
+	let pass = document.getElementById("pass");
+	let regbut = document.getElementById("regbut");
+	let repeat = document.getElementById("repeat");
+
+	regbut.setAttribute("disabled", "yes");
+
+	pass.addEventListener("input",(e)=>{
+		if(pass.value.length < 8){
+			valid.innerHTML = "<span style=\"color:red;\">длина пароля должна составлять хотябы 8 символов</span>";
+			regbut.setAttribute("disabled", "yes");
+		} else if (pass.value == repeat.value){
+			valid.innerHTML = "<span style=\"color:green;\">пароль подходит</span>";
+			regbut.removeAttribute("disabled");
+		} else {
+			valid.innerHTML = "";
+		}
+	});
+	repeat.addEventListener("input",(e)=>{
+		if(pass.value != repeat.value){
+			valid.innerHTML = "<span style=\"color:red;\">пароли не совпадают</span>";
+			regbut.setAttribute("disabled", "yes");
+		} else if (pass.value.length >= 8){
+			valid.innerHTML = "<span style=\"color:green;\">пароль подходит</span>";
+			regbut.removeAttribute("disabled");
+		}  else{
+			valid.innerHTML = "";
+
+		}
+	});
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
 
