@@ -34,6 +34,21 @@
                 <h1 class="logotexto inline">Code</h1>
                 <h1 class="logotexts inline">QZ</h1>
             </a>
+            <script>
+                const appearance = (element, timeout) => { // убрал неиспользуемый параметр display
+                    element.style.opacity = '0';
+                    element.style.transition = `opacity ${timeout}s`; // исправил на шаблонную строку с обратными кавычками
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                    }, 10);
+                }
+                const brand1 = document.querySelector('.navbar-brand');
+                appearance(brand1, 2);
+                const brand2 = document.querySelector('.logotexto');
+                appearance(brand2, 2);
+                const brand3 = document.querySelector('.logotexts');
+                appearance(brand3, 2);
+            </script>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +56,7 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-link" href="Tests.html">Test's <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="About.html">About us</a>
-                    <a class="nav-link" href="#">You are here</a>
+                    <a class="nav-link" h   ref="#">You are here</a>
                     <a class="nav-link" href="Login.html">Sign In</a>
                 </div>
             </div>
@@ -51,28 +66,30 @@
 
 <!-- Добавьте ваш контент здесь -->
 <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header p-5 pb-4 border-bottom-0">
-        <h1 class="fw-bold mb-0 fs-2">Зарегистрируйтесь</h1>
-      </div>
+    <div class="modal-dialog" role="document", id="register">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Зарегистрируйтесь</h1>
+            </div>
 
-      <div class="modal-body p-5 pt-0">
+        <div class="modal-body p-5 pt-0">
         <form class="">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">эл. почта</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">пароль</label>
-          </div>
-          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Зарегистроваться</button>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">эл. почта</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">пароль</label>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Зарегистроваться</button>
         </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
+
+    
+
 
 <footer class="footer bg-success py-3">
     <div class="container">
