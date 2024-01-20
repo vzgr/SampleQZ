@@ -126,4 +126,10 @@ width: 50px;
 .teststext {
     color: aliceblue;
 }
-
+#confrim{
+	position: absolute;
+	width: 100vw;
+	top:0;
+	height: 100vh;
+	background-color: #00000099;
+}

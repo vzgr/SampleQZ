@@ -70,7 +70,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header border-bottom-0">
-        <h1 class="modal-title fs-5">Пройти тест по JS</h1>
+        <h1 class="modal-title fs-5">Пройти тест по Unity?</h1>
       </div>
       <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
         <button type="button" class="btn btn-lg btn-primary" id="begin">Приступить</button>
@@ -85,7 +85,7 @@
 <div class="container col-xxl-8 px-4 py-5">
 	<h1 id="countdown" class="mb-4">05:00</h1>
 	<div id="quiz-container">
-    <h2>Тест по JavaScript</h2>
+    <h2>Тест по Unity</h2>
     <div id="question-container"></div>
     <div id="options-container"></div>
 	<button onclick="nextQuestion()" class="btn-primary btn btn-lg">Следующий вопрос</button>
@@ -106,61 +106,60 @@ document.getElementById("confrim").style.display = "none";
 startCountdown();
 
 });
-const questions = [
-    {
-        question: "Что такое JavaScript?",
-        options: ["Язык программирования", "Язык разметки", "Язык стилей", "Браузер", "Операционная система"],
-        correctAnswer: "Язык программирования"
-    },
-    {
-        question: "Как объявить переменную в JavaScript?",
-        options: ["variable x;", "var x;", "int x;", "let x;", "x = variable;"],
-        correctAnswer: "var x;"
-    },
-    {
-        question: "Какая ошибка в синтаксисе JavaScript?",
-        options: ["if (x == 5)", "for i = 0; i < 10; i++", "function myFunction(){}", "console.log('Hello, World!');", "let array = [1, 2, 3, 4, 5];"],
-        correctAnswer: "for i = 0; i < 10; i++"
-    },
-    {
-        question: "Какой оператор используется для строгого равенства в JavaScript?",
-        options: ["==", "===", "=", "!==", "<"],
-        correctAnswer: "==="
-    },
-    {
-        question: "Как создать функцию в JavaScript?",
-        options: ["function = myFunction(){}", "create function myFunction(){}", "function myFunction(){}", "new Function(myFunction){}", "myFunction = function(){}"],
-        correctAnswer: "function myFunction(){}"
-    },
-    {
-        question: "Что такое замыкание (closure) в JavaScript?",
-        options: ["Ошибка в коде", "Открытое окно браузера", "Процесс определения области видимости переменных", "Ответы A и B верны", "Внутренняя функция, которая имеет доступ к области видимости внешней функции"],
-        correctAnswer: "Внутренняя функция, которая имеет доступ к области видимости внешней функции"
-    },
-    {
-        question: "Какие типы данных существуют в JavaScript?",
-        options: ["String, Integer, Boolean, Float, Array", "Number, String, Boolean, Object, Null", "Char, Double, Array, Object, Undefined", "Text, Number, Boolean, Float, Array", "Number, String, Boolean, Object, Undefined"],
-        correctAnswer: "Number, String, Boolean, Object, Null"
-    },
-    {
-        question: "Какой метод используется для добавления элемента в конец массива в JavaScript?",
-        options: ["push()", "addToEnd()", "append()", "concat()", "insertEnd()"],
-        correctAnswer: "push()"
-    },
-    {
-        question: "Какой цикл используется для выполнения кода определенное количество раз?",
-        options: ["for...of", "while", "do...while", "for...in", "for"],
-        correctAnswer: "for"
-    },
-    {
-        question: "Какой метод используется для удаления последнего элемента из массива в JavaScript?",
-        options: ["removeLast()", "deleteLast()", "pop()", "shift()", "splice()"],
-        correctAnswer: "pop()"
-    }
-];
     let currentQuestionIndex = 0;
     let score = 0;
-
+const questions = [
+    {
+        question: "Что такое Unity?",
+        options: ["Язык программирования", "Графический движок", "Физический движок", "Игровая платформа", "Технология виртуальной реальности"],
+        correctAnswer: "Графический движок"
+    },
+    {
+        question: "Какой язык программирования чаще всего используется в Unity?",
+        options: ["JavaScript", "Python", "C++", "C#", "Java"],
+        correctAnswer: "C#"
+    },
+    {
+        question: "Что такое Prefab в Unity?",
+        options: ["Предустановленный объект", "Готовый проект", "Процесс рендеринга", "Спрайт", "Объект-шаблон"],
+        correctAnswer: "Объект-шаблон"
+    },
+    {
+        question: "Какой компонент используется для управления движением объекта в Unity?",
+        options: ["Rigidbody", "Transform", "Collider", "Animator", "MeshRenderer"],
+        correctAnswer: "Rigidbody"
+    },
+    {
+        question: "Что такое Unity Asset Store?",
+        options: ["Магазин для продажи игр", "Онлайн-курсы по Unity", "Магазин ресурсов для Unity", "Сервис для обмена опытом", "Интернет-банк для Unity-разработчиков"],
+        correctAnswer: "Магазин ресурсов для Unity"
+    },
+    {
+        question: "Какой объект используется для создания поведения персонажа в Unity?",
+        options: ["GameObject", "ScriptableObject", "MonoBehaviour", "Scene", "Material"],
+        correctAnswer: "MonoBehaviour"
+    },
+    {
+        question: "Что такое Unity Editor?",
+        options: ["Текстовый редактор", "Редактор для создания графики", "Интерфейс для программирования", "Графический интерфейс разработки", "Визуальный редактор звука"],
+        correctAnswer: "Графический интерфейс разработки"
+    },
+    {
+        question: "Как создать анимацию в Unity?",
+        options: ["С помощью программы для анимации", "С помощью фоторефлексии", "С помощью Unity Animator", "С помощью физического движка", "Анимации не создать в Unity"],
+        correctAnswer: "С помощью Unity Animator"
+    },
+    {
+        question: "Что такое Unity C# API?",
+        options: ["Сервис для генерации кода", "Библиотека для работы с C#", "Онлайн-платформа для обучения программированию", "Интерфейс для создания UI в Unity", "Набор инструментов для рисования"],
+        correctAnswer: "Библиотека для работы с C#"
+    },
+    {
+        question: "Как называется стандартный компонент для управления освещением в Unity?",
+        options: ["Unity Light", "Lightning", "Illuminate", "Brightener", "Light"],
+        correctAnswer: "Light"
+    }
+];
     function loadQuestion() {
         const currentQuestion = questions[currentQuestionIndex];
         const questionContainer = document.getElementById("question-container");
