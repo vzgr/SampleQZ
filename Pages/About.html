@@ -65,7 +65,18 @@
 </header>
 
 
-
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+		<div class="col-10 col-sm-8 col-lg-6"><div id="box">
+        <img src="../Images/Next team.svg" class="pre d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></div>
+      </div>
+      <div class="col-lg-6 about">
+		  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Мы</h1>
+        <p class="lead">команда разработчиков из Санкт-Петербурга, имеем опыт разработки сайтов и активно развиваемся дальше. Этот сайт мы создали для марафона умный Петербург, задача сайта в том, чтобы проходить опросы и тесты, повышая свои знания.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <footer class="footer bg-success py-3">
     <div class="container">
@@ -78,6 +89,58 @@
 $(document).ready(function() {
   $('.content-wrapper').fadeIn(1000);
 });
+</script>
+<style>
+
+img.pre{
+  transition: 0.1s;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+}
+
+
+#box:not( :hover ){
+  img.pre{
+  transform: none;
+  transition: 1s;
+  }
+}
+
+
+</style>
+
+<script>
+	const pre = document.getElementsByClassName("pre")[0];
+
+document.getElementById("box").addEventListener("mousemove", (e) => {
+  rotateElement(e, pre);
+});
+
+function rotateElement(event, element) {
+  // get mouse position
+  const x = event.clientX -element.getBoundingClientRect().left;
+  const y = event.clientY -element.getBoundingClientRect().top;
+	
+  // console.log(x, y)
+  //console.log(element.offset())
+  // find the middle
+  const middleX = element.getBoundingClientRect().width/2;
+  const middleY = element.getBoundingClientRect().height/2;
+  // console.log(middleX, middleY)
+  //console.log(middleX)
+
+  // get offset from middle as a percentage
+  // and tone it down a little
+  const offsetX = ((x - middleX) / middleX) * 20;
+  const offsetY = ((y - middleY) / middleY) * 20;
+  // console.log(offsetX, offsetY);
+
+  // set rotation
+  element.style.setProperty("--rotateX", offsetX + "deg");
+  element.style.setProperty("--rotateY", -1 * offsetY + "deg");
+}
+
 </script>
 <!-- Подключаем Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
