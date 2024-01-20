@@ -11,6 +11,9 @@ body {
         padding: 0;
         background-color: #1b1d1e; /* светло-серый фон, Bootstrap-like */
     }
+	.container{
+		color: white;
+	}
     .header, .footer {
         background-color: var(--accent); /* Зеленый фон */
         color: white;
