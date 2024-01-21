@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, request, jsonify, session, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session
@@ -50,7 +50,8 @@ def register():
 
 @app.route('/')
 def mainpage():
-    return render_template('Index.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('Index.html', is_authenticated=is_authenticated)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -59,7 +60,6 @@ def login():
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
-
         if user and check_password_hash(user.password, password):
             flash('Login successful!')
             print("you loged in!")
@@ -67,6 +67,7 @@ def login():
             return redirect(url_for('profile'))
         else:
             flash('Invalid login credentials!')
+
     return render_template('Login.html')
 
 @app.route('/logout')
@@ -77,33 +78,51 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/receive-data', methods=['POST'])
+def receive_data():
+    data = request.json  # Flask автоматически преобразует JSON-данные из POST-запроса
+    jsVariable = data['myVar']  # Извлекаем переменную из данных
+    print("Полученная переменная:", jsVariable)
+
+
+
+    # Отправляем ответ обратно в JavaScript
+    return jsonify(success=True, message="Данные получены")
+
+
 @app.route('/profile')
 def profile():
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
     user_id = session.get('user_id')  # Получаем id пользователя из сессии
     if user_id:
         user = User.query.get(user_id)
         if user:
-            return render_template('profile.html', user=user)
+            return render_template('profile.html', user=user, is_authenticated=is_authenticated)
     return redirect(url_for('login'))
 
 
 @app.route('/about')
 def about():
-    return render_template('About.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('About.html', is_authenticated=is_authenticated)
 
 @app.route('/tests')
 def tests():
-    return render_template('Tests.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('Tests.html', is_authenticated=is_authenticated)
 
 @app.route('/unitytest')
 def unitytest():
-    return render_template('Unitytest.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('Unitytest.html', is_authenticated=is_authenticated)
 @app.route('/pytest')
 def pytest():
-    return render_template('Pytest.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('Pytest.html', is_authenticated=is_authenticated)
 @app.route('/jstest')
 def jstest():
-    return render_template('Jstest.html')
+    is_authenticated = 'user_id' in session  # здесь будит True, если пользователь авторизован
+    return render_template('Jstest.html', is_authenticated=is_authenticated)
 
 if __name__ == '__main__':
     app.run(debug=True)

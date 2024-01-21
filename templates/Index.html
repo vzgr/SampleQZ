@@ -18,21 +18,20 @@
 
 
 <style>
-    h3 {
+    #textholderrr {
         height: 100%;
         margin: 0;
+        padding: 0;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+    }
+
+    h3 {
         text-align: center;
         font-family: 'Open Sans', sans-serif;
-        padding: 20px;
-        font-weight: 700;
-        line-height: 1.6;
     }
 </style>
-
-
 
 </head>
 <body>
@@ -66,11 +65,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="/tests">Test's <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/tests">Tests <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="/about">About us</a>
+                    {% if not is_authenticated %}
                     <a class="nav-link" href="/register">Sign Up</a>
                     <a class="nav-link" href="/login">Sign In</a>
+                    {% else %}
                     <a class="nav-link" href="/profile">Profile</a>
+                    {% endif %}
+                </div>
                 </div>
             </div>
         </div>
@@ -78,7 +81,7 @@
 </header>
 
 <!-- Добавьте все на страничку здесь -->
-<div class="content-wrapper">
+<div class="content-wrapper", id="textholderrr">
 
     <h3>Добро пожаловать на CodeQZ - ваш путь к мастерству в программировании! <br>Наши тесты по программированию помогут Вам оценить уровень знаний: <br>Наш широкий спектр тестов позволяет оценить ваш текущий уровень и выявить области для дальнейшего улучшения. <br>Готовы начать? <br>Присоединяйтесь к CodeCheck прямо сейчас и прокачайте свои навыки программирования с различными тестами, не выходя из дома!</h3>
 </div>
