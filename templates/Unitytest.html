@@ -204,6 +204,7 @@ const questions = [
         const quiz = document.getElementById("quiz-container");
         resultContainer.innerHTML = `<p>Вы ответили правильно на ${score} из ${questions.length} вопросов.</p>`;
 		quiz.style.display = "none";
+		send();
     }
 
     // Начать тест при загрузке страницы
@@ -244,7 +245,7 @@ const questions = [
         return num < 10 ? "0" + num : num;
     }
 
-
+	function send(){
     // AJAX запрос с использованием jQuery
     let jsVariable = score;
     $.ajax({
@@ -253,12 +254,13 @@ const questions = [
         contentType: 'application/json', // Тип контента
         data: JSON.stringify({ myVar: jsVariable }),  // Данные для отправки, преобразованные в строку JSON
         success: function(response) {
-            console.log("Данные успешно отправлены:", response);
+            console.log("Данные успешно отправлены:", response,JSON.stringify({ myVar: jsVariable }));
         },
         error: function(error) {
             console.log("Ошибка при отправке данных:", error);
         }
     });
+	}
 
 </script>
 
@@ -271,8 +273,8 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Подключаем Bootstrap JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!-- Подключаем Bootstrap JavaScript
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.1.9/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doMkKqN5JWi1toQdP5VTp0oGdjl5jBP4epzj1K9phqgwwHJT6/7P4ps" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+JS80GB+8llPCS7lxIHE2eN4HaojKE3agorz" crossorigin="anonymous"></script>
 
