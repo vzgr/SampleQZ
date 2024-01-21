@@ -8,10 +8,9 @@
 <!-- Подключаем Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link href="Css/Style.css" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/made-soulmaze" rel="stylesheet">
+<link href="../Css/Style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
 <!-- Необходимо подключить jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,12 +25,14 @@
 </head>
 <body>
 
+<link rel="stylesheet" href="static/Style.css">
+
 <header>
     <!-- Bootstrap навигационная панель -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-            <a class="navbar-brand" href="Index.html">
-                <img src="Images/Logo.png" alt="Logo", class="navbar-brand">
+            <a class="navbar-brand" href="../Index.html">
+                <img src="{{ url_for('static', filename='images/Logo.png') }}" class="image navbar-brand", alt="Logo" />
                 <h1 class="logotexto inline">Code</h1>
                 <h1 class="logotexts inline">QZ</h1>
             </a>
@@ -57,7 +58,7 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-link" href="/tests">Test's <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="/about">About us</a>
-                    <a class="nav-link" href="/register">Sign Up</a>
+                    <a class="nav-link" href="#">You are here</a>
                     <a class="nav-link" href="/login">Sign In</a>
                 </div>
             </div>
@@ -65,25 +66,79 @@
     </nav>
 </header>
 
-<!-- Добавьте все на страничку здесь -->
-<div class="content-wrapper">
+<!-- Добавьте ваш контент здесь -->
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document", id="register">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Зарегистрируйтесь</h1>
+            </div>
 
-    <h1>Hello!</h1>
-
+        <div class="modal-body p-5 pt-0">
+        <form class="">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">эл. почта</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="pass" placeholder="Password required">
+				<label for="floatingPassword">пароль</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="repeat" placeholder="Password" required>
+                <label for="floatingPassword">повторите пароль</label>
+            </div>
+			<p id="valid"></p>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="regbut">Зарегистроваться</button>
+        </form>
+        </div>
+    </div>
 </div>
+
+    
+
 
 <footer class="footer bg-success py-3">
     <div class="container">
         <span>&copy; 2024 NExt team. <a href="https://github.com/vzgr/CodeQZ"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png", class="githublogo"></a></span>
     </div>
 </footer>
+<script>
+
+	let valid = document.getElementById("valid");
+	let pass = document.getElementById("pass");
+	let regbut = document.getElementById("regbut");
+	let repeat = document.getElementById("repeat");
+
+	regbut.setAttribute("disabled", "yes");
+
+	pass.addEventListener("input",(e)=>{
+		if(pass.value.length < 8){
+			valid.innerHTML = "<span style=\"color:red;\">длина пароля должна составлять хотябы 8 символов</span>";
+			regbut.setAttribute("disabled", "yes");
+		} else if (pass.value == repeat.value){
+			valid.innerHTML = "<span style=\"color:green;\">пароль подходит</span>";
+			regbut.removeAttribute("disabled");
+		} else {
+			valid.innerHTML = "";
+		}
+	});
+	repeat.addEventListener("input",(e)=>{
+		if(pass.value != repeat.value){
+			valid.innerHTML = "<span style=\"color:red;\">пароли не совпадают</span>";
+			regbut.setAttribute("disabled", "yes");
+		} else if (pass.value.length >= 8){
+			valid.innerHTML = "<span style=\"color:green;\">пароль подходит</span>";
+			regbut.removeAttribute("disabled");
+		}  else{
+			valid.innerHTML = "";
+
+		}
+	});
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
-<script>// scripts.js
-$(document).ready(function() {
-    $('.content-wrapper').fadeIn(1000);
-});
-</script>
 
 <!-- Подключаем Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
