@@ -16,23 +16,6 @@
 <link rel="stylesheet" href="static/Style.css">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-
-<style>
-    #textholderrr {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    h3 {
-        text-align: center;
-        font-family: 'Open Sans', sans-serif;
-    }
-</style>
-
 </head>
 <body>
 
@@ -81,10 +64,22 @@
 </header>
 
 <!-- Добавьте все на страничку здесь -->
-<div class="content-wrapper", id="textholderrr">
 
-    <h3>Добро пожаловать на CodeQZ - ваш путь к мастерству в программировании! <br>Наши тесты по программированию помогут Вам оценить уровень знаний: <br>Наш широкий спектр тестов позволяет оценить ваш текущий уровень и выявить области для дальнейшего улучшения. <br>Готовы начать? <br>Присоединяйтесь к CodeCheck прямо сейчас и прокачайте свои навыки программирования с различными тестами, не выходя из дома!</h3>
-</div>
+  <div class="container col-xxl-8 px-4 py-5 ">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+		<div class="col-10 col-sm-8 col-lg-6"><div id="box">
+        <img src="{{ url_for('static', filename='images/Logo.png') }}" class="pre d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></div>
+      </div>
+      <div class="col-lg-6 about">
+		  <p class="lead" style="font-weight: 600;">Добро пожаловать на CodeQZ - ваш путь к мастерству в программировании! Наши тесты по программированию помогут Вам оценить уровень знаний: Наш широкий спектр тестов позволяет оценить ваш текущий уровень и выявить области для дальнейшего улучшения. Готовы начать? Присоединяйтесь к CodeQZ прямо сейчас и прокачайте свои навыки программирования с различными тестами, не выходя из дома!
+</p>
+		<a class="btn-primary btn btn-lg" href="./tests">Начать</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="content-wrapper", id="textholderrr">
 
 <footer class="footer bg-success py-3">
     <div class="container">

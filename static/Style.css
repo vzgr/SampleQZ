@@ -1,3 +1,4 @@
+@import "bootstrap";
 :root{
  --accent: #4caf50;
  --accent_pushed: #338a3e;
@@ -94,6 +95,8 @@ body {
 width: 50px;
 
 }
+
+
 .btn-primary{
 	background: var(--accent);
 	border: none;
@@ -110,6 +113,7 @@ width: 50px;
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:target{
+	border: none;
 	background: var(--accent_pushed);
 }
 .modal-content{
