@@ -11,6 +11,9 @@ body {
         margin: 0;
         padding: 0;
         background-color: #1b1d1e; /* светло-серый фон, Bootstrap-like */
+		min-height: 100vh;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
     }
 	.container{
 		color: white;
@@ -22,10 +25,7 @@ body {
     }
     .footer {
         text-align: center;
-        position: absolute;
-        bottom: 0;
         width: 100%;
-        left: 0;
     }
     .navbar .navbar-nav .nav-link {
         color: white;
@@ -70,7 +70,7 @@ body {
 	font-family: "MADE Soulmaze", Courier;
 	font-display: swap;
 	font-weight: 100;
-	color: #3b3b3b
+	color: #3b3b3b;
 
 }
 .about h1,.about p{
