@@ -72,9 +72,9 @@
         <h1 class="modal-title fs-5">Баллы за тесты</h1>
       </div>
       <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-		  <p>Баллы за тест по Python: </p><p></p>
-		  <p>Баллы за тест по JS: </p><p></p>
-		  <p>Баллы за тест по Unity: </p><p></p>
+		  <p>Баллы за тест по Python: </p>{{ pythtest }}<p></p>
+		  <p>Баллы за тест по JS: </p>{{ javastest }}<p></p>
+		  <p>Баллы за тест по Unity: </p>{{ unitygametest }}<p></p>
         <a class="btn btn-lg btn-secondary" href="#">Закрыть</a>
       </div>
     </div>
@@ -109,7 +109,7 @@
 	display: block;
 }
 #confrim{
-	z-index: 1500;
+	z-index: 2;
 	display: none;
 }
 </style>

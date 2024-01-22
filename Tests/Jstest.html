@@ -5,20 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CodeQZ</title>
 
+<!-- Подключаем Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href="../Css/Style.css" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/made-soulmaze" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+<!-- Необходимо подключить jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- Popper.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- Добавляем Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="static/Style.css">
 
 </head>
 <body>
@@ -27,8 +30,8 @@
     <!-- Bootstrap навигационная панель -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="{{ url_for('static', filename='images/Logo.png') }}" class="image navbar-brand", alt="Logo" />
+            <a class="navbar-brand" href="Index.html">
+                <img src="../Images/Logo.png" alt="Logo", class="navbar-brand">
                 <h1 class="logotexto inline">Code</h1>
                 <h1 class="logotexts inline">QZ</h1>
             </a>
@@ -52,14 +55,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="/tests">Tests <span class="sr-only">(current)</span></a>
-                    <a class="nav-link" href="/about">About us</a>
-                    {% if not is_authenticated %}
-                    <a class="nav-link" href="/register">Sign Up</a>
-                    <a class="nav-link" href="/login">Sign In</a>
-                    {% else %}
-                    <a class="nav-link" href="/profile">Profile</a>
-                    {% endif %}
+                    <a class="nav-link" href="../Pages/Tests.html">Test's <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../Pages/About.html">About us</a>
+                    <a class="nav-link" href="../Pages/Register.html">Sign Up</a>
+                    <a class="nav-link" href="../Pages/Login.html">Sign In</a>
                 </div>
             </div>
         </div>
@@ -71,11 +70,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header border-bottom-0">
-        <h1 class="modal-title fs-5">Пройти тест по Unity?</h1>
+        <h1 class="modal-title fs-5">Пройти тест по JS</h1>
       </div>
       <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
         <button type="button" class="btn btn-lg btn-primary" id="begin">Приступить</button>
-        <a class="btn btn-lg btn-secondary" href="/tests">Отмена</a>
+        <a class="btn btn-lg btn-secondary" href="../Pages/Tests.html">Отмена</a>
       </div>
     </div>
   </div>
@@ -86,7 +85,7 @@
 <div class="container col-xxl-8 px-4 py-5">
 	<h1 id="countdown" class="mb-4">05:00</h1>
 	<div id="quiz-container">
-    <h2>Тест по Unity</h2>
+    <h2>Тест по JavaScript</h2>
     <div id="question-container"></div>
     <div id="options-container"></div>
 	<button onclick="nextQuestion()" class="btn-primary btn btn-lg">Следующий вопрос</button>
@@ -107,60 +106,61 @@ document.getElementById("confrim").style.display = "none";
 startCountdown();
 
 });
-    let currentQuestionIndex = 0;
-    let score = 0;
 const questions = [
     {
-        question: "Что такое Unity?",
-        options: ["Язык программирования", "Графический движок", "Физический движок", "Игровая платформа", "Технология виртуальной реальности"],
-        correctAnswer: "Графический движок"
+        question: "Что такое JavaScript?",
+        options: ["Язык программирования", "Язык разметки", "Язык стилей", "Браузер", "Операционная система"],
+        correctAnswer: "Язык программирования"
     },
     {
-        question: "Какой язык программирования чаще всего используется в Unity?",
-        options: ["JavaScript", "Python", "C++", "C#", "Java"],
-        correctAnswer: "C#"
+        question: "Как объявить переменную в JavaScript?",
+        options: ["variable x;", "var x;", "int x;", "let x;", "x = variable;"],
+        correctAnswer: "var x;"
     },
     {
-        question: "Что такое Prefab в Unity?",
-        options: ["Предустановленный объект", "Готовый проект", "Процесс рендеринга", "Спрайт", "Объект-шаблон"],
-        correctAnswer: "Объект-шаблон"
+        question: "Какая ошибка в синтаксисе JavaScript?",
+        options: ["if (x == 5)", "for i = 0; i < 10; i++", "function myFunction(){}", "console.log('Hello, World!');", "let array = [1, 2, 3, 4, 5];"],
+        correctAnswer: "for i = 0; i < 10; i++"
     },
     {
-        question: "Какой компонент используется для управления движением объекта в Unity?",
-        options: ["Rigidbody", "Transform", "Collider", "Animator", "MeshRenderer"],
-        correctAnswer: "Rigidbody"
+        question: "Какой оператор используется для строгого равенства в JavaScript?",
+        options: ["==", "===", "=", "!==", "<"],
+        correctAnswer: "==="
     },
     {
-        question: "Что такое Unity Asset Store?",
-        options: ["Магазин для продажи игр", "Онлайн-курсы по Unity", "Магазин ресурсов для Unity", "Сервис для обмена опытом", "Интернет-банк для Unity-разработчиков"],
-        correctAnswer: "Магазин ресурсов для Unity"
+        question: "Как создать функцию в JavaScript?",
+        options: ["function = myFunction(){}", "create function myFunction(){}", "function myFunction(){}", "new Function(myFunction){}", "myFunction = function(){}"],
+        correctAnswer: "function myFunction(){}"
     },
     {
-        question: "Какой объект используется для создания поведения персонажа в Unity?",
-        options: ["GameObject", "ScriptableObject", "MonoBehaviour", "Scene", "Material"],
-        correctAnswer: "MonoBehaviour"
+        question: "Что такое замыкание (closure) в JavaScript?",
+        options: ["Ошибка в коде", "Открытое окно браузера", "Процесс определения области видимости переменных", "Ответы A и B верны", "Внутренняя функция, которая имеет доступ к области видимости внешней функции"],
+        correctAnswer: "Внутренняя функция, которая имеет доступ к области видимости внешней функции"
     },
     {
-        question: "Что такое Unity Editor?",
-        options: ["Текстовый редактор", "Редактор для создания графики", "Интерфейс для программирования", "Графический интерфейс разработки", "Визуальный редактор звука"],
-        correctAnswer: "Графический интерфейс разработки"
+        question: "Какие типы данных существуют в JavaScript?",
+        options: ["String, Integer, Boolean, Float, Array", "Number, String, Boolean, Object, Null", "Char, Double, Array, Object, Undefined", "Text, Number, Boolean, Float, Array", "Number, String, Boolean, Object, Undefined"],
+        correctAnswer: "Number, String, Boolean, Object, Null"
     },
     {
-        question: "Как создать анимацию в Unity?",
-        options: ["С помощью программы для анимации", "С помощью фоторефлексии", "С помощью Unity Animator", "С помощью физического движка", "Анимации не создать в Unity"],
-        correctAnswer: "С помощью Unity Animator"
+        question: "Какой метод используется для добавления элемента в конец массива в JavaScript?",
+        options: ["push()", "addToEnd()", "append()", "concat()", "insertEnd()"],
+        correctAnswer: "push()"
     },
     {
-        question: "Что такое Unity C# API?",
-        options: ["Сервис для генерации кода", "Библиотека для работы с C#", "Онлайн-платформа для обучения программированию", "Интерфейс для создания UI в Unity", "Набор инструментов для рисования"],
-        correctAnswer: "Библиотека для работы с C#"
+        question: "Какой цикл используется для выполнения кода определенное количество раз?",
+        options: ["for...of", "while", "do...while", "for...in", "for"],
+        correctAnswer: "for"
     },
     {
-        question: "Как называется стандартный компонент для управления освещением в Unity?",
-        options: ["Unity Light", "Lightning", "Illuminate", "Brightener", "Light"],
-        correctAnswer: "Light"
+        question: "Какой метод используется для удаления последнего элемента из массива в JavaScript?",
+        options: ["removeLast()", "deleteLast()", "pop()", "shift()", "splice()"],
+        correctAnswer: "pop()"
     }
 ];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
     function loadQuestion() {
         const currentQuestion = questions[currentQuestionIndex];
         const questionContainer = document.getElementById("question-container");
@@ -204,7 +204,6 @@ const questions = [
         const quiz = document.getElementById("quiz-container");
         resultContainer.innerHTML = `<p>Вы ответили правильно на ${score} из ${questions.length} вопросов.</p>`;
 		quiz.style.display = "none";
-		send();
     }
 
     // Начать тест при загрузке страницы
@@ -244,17 +243,6 @@ const questions = [
     function padNumber(num) {
         return num < 10 ? "0" + num : num;
     }
-
-	function send(){
-        // AJAX запрос с использованием jQuery
-        let jsVariable = score;
-        fetch('/process', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ page: 'unitytest', variable: score })
-        });
-	}
-
 </script>
 
 
@@ -266,8 +254,8 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Подключаем Bootstrap JavaScript
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<!-- Подключаем Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.1.9/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doMkKqN5JWi1toQdP5VTp0oGdjl5jBP4epzj1K9phqgwwHJT6/7P4ps" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+JS80GB+8llPCS7lxIHE2eN4HaojKE3agorz" crossorigin="anonymous"></script>
 
