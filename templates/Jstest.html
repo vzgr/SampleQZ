@@ -203,6 +203,7 @@ const questions = [
         const quiz = document.getElementById("quiz-container");
         resultContainer.innerHTML = `<p>Вы ответили правильно на ${score} из ${questions.length} вопросов.</p>`;
 		quiz.style.display = "none";
+		send();
     }
 
     // Начать тест при загрузке страницы
@@ -242,6 +243,22 @@ const questions = [
     function padNumber(num) {
         return num < 10 ? "0" + num : num;
     }
+	function send(){
+    // AJAX запрос с использованием jQuery
+    let jsVariable = score;
+    $.ajax({
+        url: '/receive-data',  // URL ресурса на вашем сервере
+        type: 'POST',  // Метод HTTP запроса
+        contentType: 'application/json', // Тип контента
+        data: JSON.stringify({ myVar: jsVariable }),  // Данные для отправки, преобразованные в строку JSON
+        success: function(response) {
+            console.log("Данные успешно отправлены:", response,JSON.stringify({ myVar: jsVariable }));
+        },
+        error: function(error) {
+            console.log("Ошибка при отправке данных:", error);
+        }
+    });
+	}
 </script>
 
 
