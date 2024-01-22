@@ -30,6 +30,9 @@ body {
         text-align: center;
         width: 100%;
     }
+	.navbar-toggler{
+		margin-top: 5rem;
+	}
     .navbar .navbar-nav .nav-link {
         color: white;
     }
